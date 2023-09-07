@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//we now injected DBContext into the services
 builder.Services.AddDbContext<CRUDMVC_DBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDMVCDBContext")));
 var app = builder.Build();
 

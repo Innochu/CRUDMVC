@@ -1,9 +1,11 @@
-﻿@model CRUDMVC.Models.AddNewEmployee;         //i wrote this line of code in order to treference the model properties
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿@model CRUDMVC.Models.AddNewEmployee;         //I wrote this line of code in order to treference the model properties  //we are doing a post request througth the form
+ 
 
 @{
 }
-<form method="post" action= "Add">       //we are doing a post request througth the form
+<h1>Add Employee</h1>
+
+<form method="post" action= "Add">      
     <label for="" class="form-label">fullName: </label>
     <input type="text" class="form-control" asp-for="Name" name="fullName" required>
     <br>
@@ -21,3 +23,5 @@
     <br>
     <input type="submit" value="Login!">
 </form>
+
+
