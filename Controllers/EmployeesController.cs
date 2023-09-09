@@ -2,7 +2,8 @@
 using CRUDMVC.Models;
 using CRUDMVC.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace CRUDMVC.Controllers
 {
@@ -15,6 +16,12 @@ namespace CRUDMVC.Controllers
             _cRUDMVCDBContext = cRUDMVCDBContext;
         }
 
+		[HttpGet]
+		public async Task<IActionResult> Index()
+		{
+			var employees = await _cRUDMVCDBContext.Employees.ToListAsync();
+			return View(employees);
+		}
 
         [HttpGet]
 		public IActionResult Add()            //where did IActionResult come from?
@@ -50,7 +57,7 @@ namespace CRUDMVC.Controllers
 			await _cRUDMVCDBContext.SaveChangesAsync();
 			//usually after this line of code that saves our user input in the database,
 			//there would be a follow up line of code that would direct the user to the home page after successfully login in,
-			//here we will direct it back to the add method  so we can keep adding
+			//here we will direct it back to the add method  so we  can keep adding
 
 
 			return RedirectToAction("Add");
